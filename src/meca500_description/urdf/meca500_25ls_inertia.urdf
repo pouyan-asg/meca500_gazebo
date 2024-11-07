@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<robot name="meca_500_r3">
+    <material name="blue">
+        <color rgba="0 0 0.8 1" />
+    </material>
+    <material name="gray">
+        <color rgba="0.2 0.2 0.2 1" />
+    </material>
+    <material name="silver">
+        <color rgba="0.75 0.75 0.75 1" />
+    </material>
+    <!-- world frame -->
+    <link name="world" />
+    <joint name="meca_in_world" type="fixed">
+        <origin xyz="0 0 0.0" rpy="0 0 0" />
+        <parent link="world" />
+        <child link="meca_base_link" />
+        <axis xyz="0 0 1" />
+    </joint>
+    <!-- Base link -->
+    <link name="meca_base_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://mecaGripper_description/meshes/meca_500_r3_base.dae" />
+            </geometry>
+            <material name="silver" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://mecaGripper_description/meshes/meca_500_r3_base_collision.stl" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="1.18" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <inertia ixx="0.031273897" iyy="0.053035205" izz="0.055685637" ixy="0.018937532" ixz="0.016539791" iyz="0.00978281"/>
+        </inertial>
+    </link>
+    <!-- Joint 1 -->
+    <link name="meca_axis_1_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://mecaGripper_description/meshes/meca_500_r3_j1.dae" />
+            </geometry>
+            <material name="silver" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://mecaGripper_description/meshes/meca_500_r3_j1_collision.stl" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.70" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <inertia ixx="0.072402272" iyy="0.07237672" izz="0.072350521" ixy="0.036175099" ixz="0.036187713" iyz="0.036200974"/>
+        </inertial>
+    </link>
+    <joint name="meca_axis_1_joint" type="revolute">
+        <origin xyz="0.012498 0 0.091" rpy="0 0 0" />
+        <parent link="meca_base_link" />
+        <child link="meca_axis_1_link" />
+        <axis xyz="0 0 1" />
+        <limit effort="16.6" velocity="2.61799" lower="-3.05433" upper="3.05433"/>
+        <dynamics damping="0.1" friction="0.5" />
+    </joint>
+    <!-- Joint 2 -->
+    <link name="meca_axis_2_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://mecaGripper_description/meshes/meca_500_r3_j2.dae" />
+            </geometry>
+            <material name="silver" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://mecaGripper_description/meshes/meca_500_r3_j2_collision.stl" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="1.48" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <inertia ixx="0.072171334" iyy="0.072145782" izz="0.072119583" ixy="0.03605963" ixz="0.036072244" iyz="0.036085505"/>
+        </inertial>
+    </link>
+    <joint name="meca_axis_2_joint" type="revolute">
+        <origin xyz="0 0 0.044" rpy="0 0 0" />
+        <parent link="meca_axis_1_link" />
+        <child link="meca_axis_2_link" />
+        <axis xyz="0 1 0" />
+        <limit effort="16.6" velocity="2.61799" lower="-1.22173048" upper="1.5708" />
+        <dynamics damping="0.1" friction="0.5" />
+    </joint>
+    <!-- Joint 3 -->
+    <link name="meca_axis_3_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://mecaGripper_description/meshes/meca_500_r3_j3.dae" />
+            </geometry>
+            <material name="silver" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://mecaGripper_description/meshes/meca_500_r3_j3_collision.stl" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.66" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <inertia ixx="0.07400687" iyy="0.07396644" izz="0.07589157" ixy="0.03794562" ixz="0.03667223" iyz="0.03668226"/>
+        </inertial>
+    </link>
+    <joint name="meca_axis_3_joint" type="revolute">
+        <origin xyz="0 0 0.135" rpy="0 0 0" />
+        <parent link="meca_axis_2_link" />
+        <child link="meca_axis_3_link" />
+        <axis xyz="0 1 0" />
+        <limit effort="16.6" velocity="3.14159" lower="-2.35619" upper="1.22173048" />
+        <dynamics damping="0.1" friction="0.5" />
+    </joint>
+    <!-- Joint 4 -->
+    <link name="meca_axis_4_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://mecaGripper_description/meshes/meca_500_r3_j4.dae" />
+            </geometry>
+            <material name="silver" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://mecaGripper_description/meshes/meca_500_r3_j4_collision.stl" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.27" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <inertia ixx="0.07340494" iyy="0.07332602" izz="0.07328559" ixy="0.03664215" ixz="0.03666156" iyz="0.03670231"/>
+        </inertial>
+    </link>
+    <joint name="meca_axis_4_joint" type="revolute">
+        <origin xyz="0 0 0.038" rpy="0 0 0" />
+        <parent link="meca_axis_3_link" />
+        <child link="meca_axis_4_link" />
+        <axis xyz="1 0 0" />
+        <limit effort="2.5" velocity="5.23599" lower="-2.96706" upper="2.96706" />
+        <dynamics damping="0.1" friction="0.5" />
+    </joint>
+    <!-- Joint 5 -->
+    <link name="meca_axis_5_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://mecaGripper_description/meshes/meca_500_r3_j5.dae" />
+            </geometry>
+            <material name="silver" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://mecaGripper_description/meshes/meca_500_r3_j5_collision.stl" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.29" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <inertia ixx="0.07249025" iyy="0.07246017" izz="0.07242944" ixy="0.03621456" ixz="0.03622944" iyz="0.03624496"/>
+        </inertial>
+    </link>
+    <joint name="meca_axis_5_joint" type="revolute">
+        <origin xyz="0.12 0 0" rpy="0 0 0" />
+        <parent link="meca_axis_4_link" />
+        <child link="meca_axis_5_link" />
+        <axis xyz="0 1 0" />
+        <limit effort="2.5" velocity="5.23599" lower="-2.00713" upper="2.00713" />
+        <dynamics damping="0.1" friction="0.5" />
+    </joint>
+    <!-- Joint 6 -->
+    <link name="meca_axis_6_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://mecaGripper_description/meshes/meca_500_r3_j6.dae" />
+            </geometry>
+            <material name="silver" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://mecaGripper_description/meshes/meca_500_r3_j6_collision.stl" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.01" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <inertia ixx="0.07382898" iyy="0.0733836" izz="0.07383577" ixy="0.03679999" ixz="0.03666835" iyz="0.03666835"/>
+        </inertial>
+    </link>
+    <joint name="meca_axis_6_joint" type="revolute">
+        <origin xyz="0.07 0 0" rpy="0 0 0" />
+        <parent link="meca_axis_5_link" />
+        <child link="meca_axis_6_link" />
+        <axis xyz="1 0 0" />
+        <limit effort="1.5" velocity="8.72665" lower="-3.14159" upper="3.14159" />
+        <dynamics damping="0.1" friction="0.05" />
+    </joint>
+    <!-- Gripper-->
+    <link name="meca_hand">
+        <visual>
+            <origin xyz="0 0 0" rpy="-1.5708 0 -1.5708" />
+            <geometry>
+                <mesh filename="package://mecaGripper_description/meshes/updated_meshes/modified_25LS_new.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="gray" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="-1.5708 0 -1.5708" />
+            <geometry>
+                <mesh filename="package://mecaGripper_description/meshes/updated_meshes/modified_25LS_col.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.135" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <inertia ixx="0.07446648" iyy="0.07443317" izz="0.07439921" ixy="0.03719944" ixz="0.03721594" iyz="0.03723308"/>
+        </inertial>
+    </link>
+    <joint name="meca_hand_joint" type="fixed">
+        <parent link="meca_axis_6_link" />
+        <child link="meca_hand" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
+    <!-- Fingers-->
+    <link name="leftfinger">
+        <visual>
+            <origin xyz="0 0 0" rpy="-1.5708 0 -1.5708" />
+            <geometry>
+                <mesh filename="package://mecaGripper_description/meshes/updated_meshes/left_finger.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="gray" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="-1.5708 0 -1.5708" />
+            <geometry>
+                <mesh filename="package://mecaGripper_description/meshes/updated_meshes/left_finger.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.004" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <inertia ixx="0.07079864" iyy="0.07079832" izz="0.07079735" ixy="0.03539851" ixz="0.03539851" iyz="0.03539916"/>
+        </inertial>
+    </link>
+    <joint name="leftfinger_joint" type="prismatic">
+        <parent link="meca_hand" />
+        <child link="leftfinger" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+        <limit effort="20" velocity="0.05" lower="0.0" upper="0.025"/>
+    </joint>
+    <link name="rightfinger">
+        <visual>
+            <origin xyz="0 0 0" rpy="-1.5708 0 -1.5708" />
+            <geometry>
+                <mesh filename="package://mecaGripper_description/meshes/updated_meshes/right_finger.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="gray" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="-1.5708 0 -1.5708" />
+            <geometry>
+                <mesh filename="package://mecaGripper_description/meshes/updated_meshes/right_finger.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.004" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <inertia ixx="0.07079864" iyy="0.07079832" izz="0.07079735" ixy="0.03539851" ixz="0.03539851" iyz="0.03539916"/>
+        </inertial>
+    </link>
+    <joint name="rightfinger_joint" type="prismatic">
+        <parent link="meca_hand" />
+        <child link="rightfinger" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <axis xyz="0 -1 0" />
+        <limit effort="20" velocity="0.05" lower="0.0" upper="0.025"/>
+    </joint>
+    <transmission name="trans_meca_axis_1_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="meca_axis_1_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="meca_axis_1_joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_meca_axis_2_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="meca_axis_2_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="meca_axis_2_joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_meca_axis_3_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="meca_axis_3_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="meca_axis_3_joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_meca_axis_4_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="meca_axis_4_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="meca_axis_4_joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_meca_axis_5_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="meca_axis_5_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="meca_axis_5_joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_meca_axis_6_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="meca_axis_6_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="meca_axis_6_joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_leftfinger_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="leftfinger_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="leftfinger_joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_rightfinger_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="rightfinger_joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="rightfinger_joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/</robotNamespace>
+        </plugin>
+    </gazebo>
+</robot>
+

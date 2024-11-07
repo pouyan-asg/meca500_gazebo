@@ -1,0 +1,2 @@
+meca500_description:meca_25ls_moveit
+-DCATKIN_DEVEL_PREFIX=/home/pouyan/meca500_gazebo/devel -DCMAKE_INSTALL_PREFIX=/home/pouyan/meca500_gazebo/install -G Unix Makefiles

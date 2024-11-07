@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: meca500_description
+    relative_path: urdf/meca500_25ls.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/meca_500_r3.srdf
+  CONFIG:
+    author_name: Pouyan Asgharian
+    author_email: pouyan.asgharian@gmail.com
+    generated_timestamp: 1731017799

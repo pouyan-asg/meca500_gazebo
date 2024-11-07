@@ -1,0 +1,20 @@
+controller_list:
+  - name: fake_Arm_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - meca_axis_1_joint
+      - meca_axis_2_joint
+      - meca_axis_3_joint
+      - meca_axis_4_joint
+      - meca_axis_5_joint
+      - meca_axis_6_joint
+  - name: fake_Hand_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - leftfinger_joint
+      - rightfinger_joint
+initial:  # Define initial robot poses per group
+  - group: Arm
+    pose: Home
+  - group: Hand
+    pose: Half open

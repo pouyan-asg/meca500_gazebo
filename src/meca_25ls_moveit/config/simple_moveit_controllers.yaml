@@ -1,0 +1,19 @@
+controller_list:
+  - name: Arm_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: True
+    joints:
+      - meca_axis_1_joint
+      - meca_axis_2_joint
+      - meca_axis_3_joint
+      - meca_axis_4_joint
+      - meca_axis_5_joint
+      - meca_axis_6_joint
+  - name: Hand_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: True
+    joints:
+      - leftfinger_joint
+      - rightfinger_joint

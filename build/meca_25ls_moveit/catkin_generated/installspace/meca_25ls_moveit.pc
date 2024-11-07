@@ -1,0 +1,8 @@
+prefix=/home/pouyan/meca500_gazebo/install
+
+Name: meca_25ls_moveit
+Description: Description of meca_25ls_moveit
+Version: 0.3.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
